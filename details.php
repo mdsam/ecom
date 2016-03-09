@@ -21,8 +21,8 @@ include ("functions/functions.php");
 
 <!-- header wrapper start here -->
 	<div class="header_wrapper"> 
-	<a href="index.php">	<img id="logo" src="images/lgo.png"></a>
-	<a href="index.php">	<img id="banner" src="images/banner.png"> </a>
+		<img id="logo" src="images/lgo.png">
+		<img id="banner" src="images/banner.png">
 
 	</div>
 
@@ -36,11 +36,11 @@ include ("functions/functions.php");
 
 <ul id="menu">
 	
-<li><a href="index.php"> Home </li>
-<li><a href="all_products.php"> All Products </li>
-<li><a href="customer/my_account.php"> My Account </li>
+<li><a href="#"> Home </li>
+<li><a href="#"> All Products </li>
+<li><a href="#"> My Account </li>
 <li><a href="#"> Sign Up </li>
-<li><a href="cart.php"> Shopping Cart </li>
+<li><a href="#"> Shopping Cart </li>
 <li><a href="#"> Contact Us </li>
 
 </ul>
@@ -81,7 +81,6 @@ include ("functions/functions.php");
 			
 				<?php getbrands(); ?>
 
-
 		</ul>
 
 </div>
@@ -89,11 +88,9 @@ include ("functions/functions.php");
 
 <div class="content_area"> 
 
-		<?php cart(); ?>
-
 		<div id="shoping_cart">
 			
-		<span style="float:right; font-size:18px; padding:5px; line-height:40px;">Welcome Guesst! <b style="color:yellow">Shopping  Cart</b> Total Items <?php echo total_itmes(); ?> - Total Price <?php total_price(); ?> <a href="cart.php" style="color:yellow"> Go to cart </a>
+		<span style="float:right; font-size:18px; padding:5px; line-height:40px;">Welcome Guesst! <b style="color:yellow">Shopping  Cart</b> Total Items - Total Price <a href="cart.php" style="color:yellow"> Go to cart </a>
 
 
 
@@ -101,17 +98,43 @@ include ("functions/functions.php");
 
 		</div>
 
-
-
 		<div id="product_box">
+		<?php
+			if(isset($_GET['pro_id'])){
 
-		<?php getpro(); ?>
+			$product_id = $_GET['pro_id'];
+
+			$get_pro = "select * from products where product_id='$product_id'";
+			$run_pro = mysqli_query($con, $get_pro);
+
+			while($row_pro=mysqli_fetch_array($run_pro)){
+
+				$pro_id = $row_pro['product_id'];
+				$pro_title = $row_pro['product_title'];
+				$pro_price = $row_pro['product_price'];
+				$pro_image = $row_pro['product_img1'];
+				$pro_desc = $row_pro['product_desc'];
+
+				echo"
+				<div id='single_product'>
+						<h3>$pro_title</h3>
+						<img src='admin_area/product_images/$pro_image' width='400' height='300' />
 
 
-		<?php getcatpro(); ?>
+						<p><b>$ $pro_price<b><p>
+						<p><b>$ $pro_desc<b><p>
 
 
-		<?php getbrandpro(); ?>
+						<a href='index.php'>Go Back</a>
+						<a href='index.php?pro_id=$pro_id'><button style='float:left;'>Add to Cart</button></a>
+
+				</div>";
+
+
+
+		}
+}
+?>
 
 		</div>
 

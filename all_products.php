@@ -89,11 +89,9 @@ include ("functions/functions.php");
 
 <div class="content_area"> 
 
-		<?php cart(); ?>
-
 		<div id="shoping_cart">
 			
-		<span style="float:right; font-size:18px; padding:5px; line-height:40px;">Welcome Guesst! <b style="color:yellow">Shopping  Cart</b> Total Items <?php echo total_itmes(); ?> - Total Price <?php total_price(); ?> <a href="cart.php" style="color:yellow"> Go to cart </a>
+		<span style="float:right; font-size:18px; padding:5px; line-height:40px;">Welcome Guesst! <b style="color:yellow">Shopping  Cart</b> Total Items - Total Price <a href="cart.php" style="color:yellow"> Go to cart </a>
 
 
 
@@ -101,18 +99,10 @@ include ("functions/functions.php");
 
 		</div>
 
-
-
 		<div id="product_box">
 
-		<?php getpro(); ?>
-
-
-		<?php getcatpro(); ?>
-
-
-		<?php getbrandpro(); ?>
-
+		<?php getallpro(); ?>
+		
 		</div>
 
 
