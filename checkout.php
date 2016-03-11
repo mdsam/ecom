@@ -104,7 +104,9 @@ include ("functions/functions.php");
 
 		<div id="product_box">
 
-		<?php if(!isset($_SESSION['customer_email'])){
+		<?php 
+
+		if(!isset($_SESSION['customer_email'])){
 
 				include ("customer_login.php");
 		}else {

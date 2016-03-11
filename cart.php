@@ -134,7 +134,7 @@ include ("functions/functions.php");
 
 	$ip = getIp();
 
-	$sel_price = "select * from cart where ip_add='1270'";
+	$sel_price = "select * from cart where ip_add='$ip'";
 
 	$run_price = mysqli_query($con, $sel_price);
 
@@ -193,16 +193,14 @@ include ("functions/functions.php");
 
 	}
 
-
+}
 		?>
 
 		<td> <?php echo "$". $single_price; ?></td>
 		</tr>
 
 
-		
-
-	<?php }  } ?>
+	<?php }  ?>
 
 		<tr align="right"> 
 		<td colspan="4"><b>Sub Total</b></td>
@@ -233,7 +231,7 @@ include ("functions/functions.php");
 
 		foreach ($_POST['remove'] as $remove_id){
 
-			$delete_product = "delete from cart where p_id= '$remove_id' and ip_add='1270'";
+			$delete_product = "delete from cart where p_id= '$remove_id' and ip_add='$ip'";
 
 			$run_delete = mysqli_query($con,$delete_product);
 
